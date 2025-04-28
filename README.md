@@ -24,6 +24,7 @@ Ensure that homebrew is installed then use the following command in the terminal
 After installing, set your name and email (the same email you use for GitHub):
 
 `git config --global user.name "Your Name"`
+
 `git config --global user.email "your@email.com"`
 
 Display and check your current name and email with: `git config --list`
@@ -50,6 +51,7 @@ Our projects are within the GitHub Organization, Mastodon Games. You will either
 
 Every time you want to work on the project, you should:
 
+
 1. Pull the latest changes: 
 
 Make a directory somewhere in your file system: `mkdir <project-name>`
@@ -58,14 +60,17 @@ Change directory to the project folder on your system: `cd <project-name>`
 
 Then pull: `git pull origin main` (Replace main with your branch name if you're on another branch)
 
+
 2. Create a New Branch (for any new feature)
 
 NEVER work directly on main and always create a branch: `git checkout -b <your-branch-name>`
 
 Examples:
+
 `git checkout -b add-new-level`
 
 `git checkout -b fix-bug-42`
+
 
 3. Work and Save Changes
 
@@ -77,9 +82,11 @@ Or to add everything: `git add .`
 
 Then commit with a message: `git commit -m "Short clear message about what you did"`
 
+
 4. Push Your Branch
 
 Push your branch to GitHub: `git push origin your-branch-name`
+
 
 5. Create a Pull Request (PR)
 - Go to the GitHub repo in the browser
@@ -95,20 +102,24 @@ In software and game development, sometimes the code can end up broken and it ma
 
 Revert to a specific commit and ignore any changes made since that commit: `git reset --hard <commit-id>`
 
-Or you can revert to the previous commit with `git reset --hard HEAD`
+Or you can revert to the previous commit: `git reset --hard HEAD`
 
 There are many other commands that can be used depending on what you want to revert/what you want to keep, but they are out of scope of this tutorial.
 
 ## Merging Branches and Resolving Conflicts
 
-Two people editing the same part of a file can cause a merge conflict.
+Multiple people editing the same part of a file can cause a merge conflict.
 
 To handle it properly, make sure your local branch is up to date with `git pull origin main`. If there’s a conflict, Git will tell you which files are conflicting. If you open the conflicting file in your text editor, you will see sections like:
 
 `<<<<<<< HEAD`
+
 `your changes`
+
 `=======`
+
 `their changes`
+
 `>>>>>>> main`
 
 Edit the file manually to fix it — keep the correct code and delete the `<<<<<<<, =======, and >>>>>>>` lines.
