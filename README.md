@@ -103,23 +103,17 @@ There are many other commands that can be used depending on what you want to rev
 
 Two people editing the same part of a file can cause a merge conflict.
 
-To handle it properly:
+To handle it properly, make sure your local branch is up to date with `git pull origin main`. If there’s a conflict, Git will tell you which files are conflicting. Open the conflicting file and you will see sections like:
 
-When merging:
-
-1. make sure your local branch is up to date with `git pull origin main`
-
-If there’s a conflict, Git will tell you which files are conflicting.
-
-Open the conflicting file and you will see sections like:
-
+`
 <<<<<<< HEAD
 your changes
 =======
 their changes
 >>>>>>> main
+`
 
-Edit the file manually to fix it — keep the correct code and delete the <<<<<<<, =======, and >>>>>>> lines.
+Edit the file manually to fix it — keep the correct code and delete the `<<<<<<<, =======, and >>>>>>>` lines.
 
 After fixing, do not forget to git add, commit, and push again.
 
@@ -151,11 +145,11 @@ See which remote repo you're connected to: `git remote -v`
 If you prefer a visual interface over the terminal, you can install and use GitHub Desktop. This is also out of scope of this tutorial but a valid option if you prefer a GUI.
 
 ## Workflow TL:DR
-1. git pull origin main
-2. git checkout -b feature-branch
+1. `git pull origin main`
+2. `git checkout -b feature-branch`
 3. Make some changes
-4. git add .
-5. git commit -m "your message"
-6. git push origin feature-branch
+4. `git add .`
+5. `git commit -m "your message"`
+6. `git push origin feature-branch`
 7. go to GitHub and create a PR
 
