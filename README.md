@@ -23,73 +23,63 @@ Ensure that homebrew is installed then use the following command in the terminal
 
 After installing, set your name and email (the same email you use for GitHub):
 
-git config --global user.name "Your Name"
-git config --global user.email "your@email.com"
+`git config --global user.name "Your Name"`
+`git config --global user.email "your@email.com"`
 
-Check your setup:
-
-git config --list
+Display and check your current name and email with: `git config --list`
 
 ## Create or Clone a Repo
 
 Our projects are within the GitHub Organization, Mastodon Games. You will either:
 
-### Clone an existing repo:
+### Clone an existing repo with:
 
+#### HTTPS
 `git clone https://github.com/our-organization/project-name.git`
+
+#### SSH
+`git clone git@github.com:mastodon-games/game-idea-2.git`
 
 ### Create a new repo:
 
-1. Go to the Organization's GitHub page.
+1. Go to the Organization's GitHub repositories page
+2. Create a new repository
+3. Initialize it without a README.md to get instructions on the next page on how to clone and make your first commit
 
-2. Create a new repository.
-
-3. Then clone it as shown above.
-
-## Basic Workflow (Always Follow This!)
+## Basic Workflow 
 
 Every time you want to work on the project, you should:
+
 a. Pull the latest changes: 
 
-By moving to the project folder on your system: `cd project-name`
+Make a directory somewhere in your file system: `mkdir <project-name>`
 
-Then pull: `git pull origin main`. (Replace main with your branch name if you're on another branch)
+Change directory to the project folder on your system: `cd <project-name>`
+
+Then pull: `git pull origin main` (Replace main with your branch name if you're on another branch)
 
 b. Create a New Branch (for any new feature)
 
-NEVER work directly on main.
-Always create a branch:
-
-`git checkout -b your-branch-name`
+NEVER work directly on main and always create a branch: `git checkout -b <your-branch-name>`
 
 Examples:
-
 `git checkout -b add-new-level`
+
 `git checkout -b fix-bug-42`
 
 c. Work and Save Changes
 
-After editing files, check what changed:
+After editing files, check what changed: `git status`
 
-`git status`
+Add changes you want to save: `git add <filename>`
 
-Add changes you want to save:
+Or to add everything: `git add .`
 
-`git add <filename>`
-
-Or to add everything:
-
-`git add .`
-
-Then commit with a message:
-
-`git commit -m "Short clear message about what you did"`
+Then commit with a message: `git commit -m "Short clear message about what you did"`
 
 d. Push Your Branch
 
-Push your branch to GitHub:
-
-`git push origin your-branch-name`
+Push your branch to GitHub: `git push origin your-branch-name`
 
 e. Create a Pull Request (PR)
 - Go to the GitHub repo in the browser
@@ -97,18 +87,31 @@ e. Create a Pull Request (PR)
 - Review your changes and submit the PR
 - Someone else should review it and merge
 
+You should be committing whenever a new feature is added that works as intended and does not break any other code. Examples could include, adding a new working function, fixing typos, or finishing work for the day. Some days you might have 50 commits and some days you might have 1. This is all valid and YMMV. Always ensure to push your commits after you're done working for the day so other developers can view your changes.
+
+## Reverting Changes
+
+In software and game development, sometimes the code can end up broken and it may be easier to start fresh from code you know runs without error. This can be done multiple ways:
+
+Revert to a specific commit and ignore any changes made since that commit: `git reset --hard <commit-id>`
+
+Or you can revert to the previous commit with `git reset --hard HEAD`
+
+There are many other commands that can be used depending on what you want to revert/what you want to keep, but they are out of scope of this tutorial.
+
 ## Merging Branches and Resolving Conflicts
 
 Two people editing the same part of a file can cause a merge conflict.
 
 To handle it properly:
+
 When merging:
 
 1. make sure your local branch is up to date with `git pull origin main`
 
 If there’s a conflict, Git will tell you which files are conflicting.
 
-Open the conflicting file — you will see sections like:
+Open the conflicting file and you will see sections like:
 
 <<<<<<< HEAD
 your changes
@@ -118,43 +121,36 @@ their changes
 
 Edit the file manually to fix it — keep the correct code and delete the <<<<<<<, =======, and >>>>>>> lines.
 
-After fixing:
+After fixing, do not forget to git add, commit, and push again.
 
-git add filename
-git commit
-
-Then push again:
-
-    git push origin your-branch-name
-
-Your PR will now be clean and ready to merge.
+Your PR should now be clean and ready to merge.
 
 ## Good Habits
-
-    Always pull before you start working (git pull).
-
-    Always create a new branch for each feature or bugfix.
-
-    Small commits with clear messages are better than giant ones.
-
-    Communicate if you're about to touch big files that others might also be editing!
-
-    Review Pull Requests carefully — double-check code before approving.
+- Always pull before you start working (git pull)
+- Always create a new branch for each feature or bugfix
+- Make small commits with clear messages and avoid waiting to make commits where there are multiple significant changes
+- Communicate if you're about to touch big files that others might also be editing
+- Review Pull Requests carefully and double-check code before approving
 
 ## Extra Commands You Might Need
-Command	Purpose
-git branch	List all local branches
-git branch -r	List remote branches
-git checkout branch-name	Switch to a different branch
-git merge branch-name	Merge another branch into your current branch
-git log --oneline	See a simple list of past commits
-git remote -v	See which remote repo you’re connected to
 
-## Helpful Git GUI Tools (Optional)
+List all local branches: `git branch`
 
-If you prefer a visual interface over the terminal, you can install and use GitHub Desktop
+List remote branches: `git branch -r`
 
-## TL:DR
+Switch to a different branch or commit: `git checkout <branch-name or commit-id>`
+
+Merge another branch into your current branch: `git merge <branch-name or commit-id>`
+
+See a simple list of past commits: `git log --oneline`
+
+See which remote repo you're connected to: `git remote -v`
+
+## Git Graphical User Interface
+
+If you prefer a visual interface over the terminal, you can install and use GitHub Desktop. This is also out of scope of this tutorial but a valid option if you prefer a GUI.
+
+## Workflow TL:DR
 1. git pull origin main
 2. git checkout -b feature-branch
 3. Make some changes
@@ -162,3 +158,4 @@ If you prefer a visual interface over the terminal, you can install and use GitH
 5. git commit -m "your message"
 6. git push origin feature-branch
 7. go to GitHub and create a PR
+
