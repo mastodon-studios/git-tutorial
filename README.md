@@ -50,7 +50,7 @@ Our projects are within the GitHub Organization, Mastodon Games. You will either
 
 Every time you want to work on the project, you should:
 
-a. Pull the latest changes: 
+1. Pull the latest changes: 
 
 Make a directory somewhere in your file system: `mkdir <project-name>`
 
@@ -58,7 +58,7 @@ Change directory to the project folder on your system: `cd <project-name>`
 
 Then pull: `git pull origin main` (Replace main with your branch name if you're on another branch)
 
-b. Create a New Branch (for any new feature)
+2. Create a New Branch (for any new feature)
 
 NEVER work directly on main and always create a branch: `git checkout -b <your-branch-name>`
 
@@ -67,7 +67,7 @@ Examples:
 
 `git checkout -b fix-bug-42`
 
-c. Work and Save Changes
+3. Work and Save Changes
 
 After editing files, check what changed: `git status`
 
@@ -77,11 +77,11 @@ Or to add everything: `git add .`
 
 Then commit with a message: `git commit -m "Short clear message about what you did"`
 
-d. Push Your Branch
+4. Push Your Branch
 
 Push your branch to GitHub: `git push origin your-branch-name`
 
-e. Create a Pull Request (PR)
+5. Create a Pull Request (PR)
 - Go to the GitHub repo in the browser
 - Click the "Compare & Pull Request" button
 - Review your changes and submit the PR
@@ -103,15 +103,13 @@ There are many other commands that can be used depending on what you want to rev
 
 Two people editing the same part of a file can cause a merge conflict.
 
-To handle it properly, make sure your local branch is up to date with `git pull origin main`. If there’s a conflict, Git will tell you which files are conflicting. Open the conflicting file and you will see sections like:
+To handle it properly, make sure your local branch is up to date with `git pull origin main`. If there’s a conflict, Git will tell you which files are conflicting. If you open the conflicting file in your text editor, you will see sections like:
 
-`
-<<<<<<< HEAD
-your changes
-=======
-their changes
->>>>>>> main
-`
+`<<<<<<< HEAD`
+`your changes`
+`=======`
+`their changes`
+`>>>>>>> main`
 
 Edit the file manually to fix it — keep the correct code and delete the `<<<<<<<, =======, and >>>>>>>` lines.
 
