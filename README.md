@@ -29,6 +29,65 @@ After installing, set your name and email (the same email you use for GitHub):
 
 Display and check your current name and email with: `git config --list`
 
+## Add an SSH key to your GitHub account
+
+### Check for existing SSH keys
+
+Open your terminal and list all the files in your .ssh directory (if they exist): `ls -al ~/.ssh`
+The filenames of supported public keys for GitHub are 
+
+- id_rsa.pub
+
+- id_ecdsa.pub
+
+- id_ed25519.pub
+
+### Generate a new SSH key
+
+You can skip this if you have an existing SSH key.
+
+Open your terminal and paste the following command, replacing the example email with your GitHub email address `ssh-keygen -t ed25519 -C "example@example.com`
+
+If you are using a legacy system that does not have support for the Ed25519 algorithm, use: `ssh-keygen -t rsa -b 4096 -C "example@example.com"`
+
+These commands will create a new SSH key, associated with the provided email. You will then get the following prompts: 
+
+1. Enter a file in which to save the key (/home/YOU/.ssh/id_ALGORITHM):[Press enter]
+
+2. Enter passphrase (empty for no passphrase): [Type a passphrase]
+
+3. Enter same passphrase again: [Type passphrase again]
+
+For our purposes, you can simply press Enter to use the default options for all of the prompts. You can read more about [generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and [working with SSH key passphrases](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases). 
+
+### Adding your SSH key to the ssh-agent
+
+Start the ssh-agent in the background: `eval "$(ssh-agent -s)"`
+
+Add your SSH private key to the ssh-agent: `ssh-add ~/.ssh/id_ALGORITHM` which will most likely be `ssh-add ~/.ssh/id_ed25519`
+
+### Add your SSH key to your GitHub account
+
+1. Display the SSH public key in your terminal: `cat ~/.ssh/id_ALGORITHM.pub`
+
+2. Select and copy the contents of your id_ALGORITHM.pub file that was displayed in your terminal
+
+3. Navigate to the GitHub web page
+
+4. Go to your settings by clicking your profile photo in the upper-right corner of the page then clicking Settings
+
+5. Find the "Access" section of the sidebar and click "SSH and GPG keys"
+
+6. Click "New SSH key" or "Add SSH key"
+
+7. In the "Title" field, add a descriptive label for the new key. For example, if you're using a personal laptop, you might call this key "Personal laptop"
+
+8. Set the key type to "Authentication key"
+
+9. In the "Key" field, paste your public key
+
+10. Click Add SSH key
+
 ## Create or Clone a Repo
 
 Our projects are within the GitHub Organization, Mastodon Games. You will either:
