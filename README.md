@@ -7,7 +7,7 @@ This guide will help you get started with Git and GitHub so we can all work smoo
 ### Windows
 
 Download Git: https://git-scm.com/download/win
-    
+
 Install it with default settings (important: make sure "Git Bash" and "Git from Command Line" are checked).
 
 ### Mac
@@ -17,6 +17,7 @@ Ensure that homebrew is installed then use the following command in the terminal
 `brew install git`
 
 ### Linux (Ubuntu/Debian)
+
 `sudo apt install git`
 
 ## Set Up Git (First Time Only)
@@ -34,7 +35,7 @@ Display and check your current name and email with: `git config --list`
 ### Check for existing SSH keys
 
 Open your terminal and list all the files in your .ssh directory (if they exist): `ls -al ~/.ssh`
-The filenames of supported public keys for GitHub are 
+The filenames of supported public keys for GitHub are
 
 - id_rsa.pub
 
@@ -50,7 +51,7 @@ Open your terminal and paste the following command, replacing the example email 
 
 If you are using a legacy system that does not have support for the Ed25519 algorithm, use: `ssh-keygen -t rsa -b 4096 -C "example@example.com"`
 
-These commands will create a new SSH key, associated with the provided email. You will then get the following prompts: 
+These commands will create a new SSH key, associated with the provided email. You will then get the following prompts:
 
 1. Enter a file in which to save the key (/home/YOU/.ssh/id_ALGORITHM):[Press enter]
 
@@ -58,7 +59,7 @@ These commands will create a new SSH key, associated with the provided email. Yo
 
 3. Enter same passphrase again: [Type passphrase again]
 
-For our purposes, you can simply press Enter to use the default options for all of the prompts. You can read more about [generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and [working with SSH key passphrases](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases). 
+For our purposes, you can simply press Enter to use the default options for all of the prompts. You can read more about [generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and [working with SSH key passphrases](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases).
 
 ### Adding your SSH key to the ssh-agent
 
@@ -95,9 +96,11 @@ Our projects are within the GitHub Organization, Mastodon Games. You will either
 ### Clone an existing repo with:
 
 #### HTTPS
+
 `git clone https://github.com/our-organization/project-name.git`
 
 #### SSH
+
 `git clone git@github.com:mastodon-games/game-idea-2.git`
 
 ### Create a new repo:
@@ -106,19 +109,17 @@ Our projects are within the GitHub Organization, Mastodon Games. You will either
 2. Create a new repository
 3. Initialize it without a README.md to get instructions on the next page on how to clone and make your first commit
 
-## Basic Workflow 
+## Basic Workflow
 
 Every time you want to work on the project, you should:
 
-
-1. Pull the latest changes: 
+1. Pull the latest changes:
 
 Make a directory somewhere in your file system: `mkdir <project-name>`
 
 Change directory to the project folder on your system: `cd <project-name>`
 
 Then pull: `git pull origin main` (Replace main with your branch name if you're on another branch)
-
 
 2. Create a New Branch (for any new feature)
 
@@ -130,7 +131,6 @@ Examples:
 
 `git checkout -b fix-bug-42`
 
-
 3. Work and Save Changes
 
 After editing files, check what changed: `git status`
@@ -141,13 +141,14 @@ Or to add everything: `git add .`
 
 Then commit with a message: `git commit -m "Short clear message about what you did"`
 
-
 4. Push Your Branch
 
 Push your branch to GitHub: `git push origin your-branch-name`
 
+If the repository has been updated since you last made changes you may need to `git pull --rebase`. This will fetch the updates from the repository and re-apply your local commits on top of those changes. This is assuming that the missing updates are in separate parts of the repository and will help avoid unnecessary merge conflicts.
 
 5. Create a Pull Request (PR)
+
 - Go to the GitHub repo in the browser
 - Click the "Compare & Pull Request" button
 - Review your changes and submit the PR
@@ -188,6 +189,7 @@ After fixing, do not forget to git add, commit, and push again.
 Your PR should now be clean and ready to merge.
 
 ## Good Habits
+
 - Always pull before you start working (git pull)
 - Always create a new branch for each feature or bugfix
 - Make small commits with clear messages and avoid waiting to make commits where there are multiple significant changes
@@ -213,11 +215,12 @@ See which remote repo you're connected to: `git remote -v`
 If you prefer a visual interface over the terminal, you can install and use GitHub Desktop. This is also out of scope of this tutorial but a valid option if you prefer a GUI.
 
 ## Workflow TL:DR
+
 1. `git pull origin main`
 2. `git checkout -b feature-branch`
 3. Make some changes
 4. `git add .`
 5. `git commit -m "your message"`
 6. `git push origin feature-branch`
-7. go to GitHub and create a PR
-
+7. `git pull --rebase` if the repo has been updated since you last pulled
+8. go to GitHub and create a PR
