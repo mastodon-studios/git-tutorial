@@ -141,6 +141,8 @@ Or to add everything: `git add .`
 
 Then commit with a message: `git commit -m "Short clear message about what you did"`
 
+Examples of commits
+
 4. Push Your Branch
 
 Push your branch to GitHub: `git push origin your-branch-name`
@@ -224,3 +226,6 @@ If you prefer a visual interface over the terminal, you can install and use GitH
 6. `git push origin feature-branch`
 7. `git pull --rebase` if the repo has been updated since you last pulled
 8. go to GitHub and create a PR
+
+## Resources
+
