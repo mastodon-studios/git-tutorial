@@ -125,13 +125,36 @@ Then pull: `git pull origin main` (Replace main with your branch name if you're 
 
 NEVER work directly on main and always create a branch: `git checkout -b <your-branch-name>`
 
+Use lowercase and hyphens to separate words in branch names.
+
 Examples:
 
-`git checkout -b add-new-level`
+```shell
+# good
+$ git checkout -b fix-billboarding
 
-`git checkout -b fix-bug-42`
+# also good: identifiers to corresponding GitHub issues
+$ git checkout -b issue-15
 
-3. Work and Save Changes
+# bad - too vague
+$ git checkout -b menu_fix
+```
+
+We should avoid working on the same files/features to mitigate the amount of merge conflicts, but if that is unavoidable, you can use the following naming convention:
+
+```shell
+$ git checkout -b new-feature/main
+$ git checkout -b new-feature/larry
+$ git checkout -b new-feature/nicholas
+```
+
+Make sure to delete your branch after it is merged. This involves deleting the remote branch, the local branch, and the local remote-tracking branch.
+
+1. Delete the remote branch: `git push origin -d <branch>`
+2. Delete the local branch: `git branch -d <branch>` or `git branch -D <branch>` for force delete un-merged branches
+3. Delete the local remote-tracking branch: `git branch -dr <remote>/<branch>` i.e. `git branch -dr origin/issue-21`
+
+4. Work and Save Changes
 
 After editing files, check what changed: `git status`
 
@@ -139,9 +162,17 @@ Add changes you want to save: `git add <filename>`
 
 Or to add everything: `git add .`
 
-Then commit with a message: `git commit -m "Short clear message about what you did"`
+Then commit with a message: `git commit -m "Short clear message about what you did"` or `git commit` in which you will then edit the first line of the `COMMIT_EDITMSG` file with your commit message.
 
-Examples of commits
+Commits should be no longer than 50 characters. Examples of commits:
+
+```shell
+# good - imperative present tense, capitalized, fewer than 50 characters
+Mark huge records as obsolete when clearing hinting faults
+
+# bad
+fixed ActiveModel::Errors deprecation messages failing when AR was used outside of Rails.
+```
 
 4. Push Your Branch
 
@@ -228,4 +259,3 @@ If you prefer a visual interface over the terminal, you can install and use GitH
 8. go to GitHub and create a PR
 
 ## Resources
-
