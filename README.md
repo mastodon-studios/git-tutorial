@@ -152,7 +152,7 @@ Make sure to delete your branch after it is merged. This involves deleting the r
 
 1. Delete the remote branch: `git push origin -d <branch>`
 2. Delete the local branch: `git branch -d <branch>` or `git branch -D <branch>` for force delete un-merged branches
-3. Delete the local remote-tracking branch: `git branch -dr <remote>/<branch>` i.e. `git branch -dr origin/issue-21`
+3. Delete the local remote-tracking branch: `git branch -dr <remote>/<branch>` i.e. `git branch -dr origin/issue-21` OR use the prune option to remove any remote tracking branch in your local repository that points to a remote branch that has been deleted on the server with `git fetch origin --prune`
 
 4. Work and Save Changes
 
